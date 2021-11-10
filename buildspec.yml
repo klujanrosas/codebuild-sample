@@ -16,7 +16,7 @@ phases:
     commands:
       - echo "Post Build Phase"
       - |
-        if [ $CODEBUILD_WEBHOOK_TRIGGER == "branch/main" ]; then
+        if [ $CODEBUILD_WEBHOOK_TRIGGER = "branch/main" ]; then
           aws s3 cp ./dist/index.html s3://kennet-codebuild
         else
           echo "Skipping S3 asset uploading."
