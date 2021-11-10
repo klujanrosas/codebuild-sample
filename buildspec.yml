@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Install Phase"
+  build:
+    commands:
+      - echo "Build Phase"
+      - cp index.html ./dist/index.html
+  post_build:
+    commands:
+      - echo "Post Build Phase"
+
+artifacts:
+  files:
+    - ./dist/index.html
