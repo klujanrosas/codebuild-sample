@@ -15,7 +15,12 @@ phases:
   post_build:
     commands:
       - echo "Post Build Phase"
-      - aws s3 cp ./dist/index.html s3://kennet-codebuild
+      - |
+        if [ $CODEBUILD_WEBHOOK_EVENT != "PUSH" ]; then
+          aws s3 cp ./dist/index.html s3://kennet-codebuild
+        else
+          echo "Skipping S3 asset uploading."
+        fi
 
 artifacts:
   files:
