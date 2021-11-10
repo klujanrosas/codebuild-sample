@@ -4,6 +4,8 @@ phases:
   install:
     commands:
       - echo "Install Phase"
+      - echo $CODEBUILD_WEBHOOK_EVENT
+      - echo $CODEBUILD_WEBHOOK_TRIGGER
   build:
     commands:
       - echo "Build Phase"
