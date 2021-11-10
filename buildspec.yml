@@ -4,16 +4,17 @@ phases:
   install:
     commands:
       - echo "Install Phase"
-      - aws help
   build:
     commands:
       - echo "Build Phase"
       - mkdir dist
       - cp index.html ./dist/index.html
+      - echo "build logs" > logs.txt
   post_build:
     commands:
       - echo "Post Build Phase"
+      - aws s3 cp ./dist/index.html s3://kennet-codebuild
 
 artifacts:
   files:
-    - ./dist/index.html
+    - logs.txt
